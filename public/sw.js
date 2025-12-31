@@ -1,3 +1,7 @@
+import { precacheAndRoute } from "workbox-precaching";
+
+precacheAndRoute(self.__WB_MANIFEST);
+
 self.addEventListener("install", () => {
   self.skipWaiting();
 });
@@ -44,11 +48,17 @@ self.addEventListener("notificationclick", (event) => {
 
   event.waitUntil(
     (async () => {
-      const allClients = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
+      const allClients = await self.clients.matchAll({
+        type: "window",
+        includeUncontrolled: true,
+      });
 
       for (const client of allClients) {
         try {
-          client.postMessage({ type: "NOTIFICATION_OPENED", notification_id: notificationId });
+          client.postMessage({
+            type: "NOTIFICATION_OPENED",
+            notification_id: notificationId,
+          });
           await client.focus();
           return;
         } catch {}
@@ -59,7 +69,10 @@ self.addEventListener("notificationclick", (event) => {
       if (newClient) {
         await new Promise((r) => setTimeout(r, 300));
         try {
-          newClient.postMessage({ type: "NOTIFICATION_OPENED", notification_id: notificationId });
+          newClient.postMessage({
+            type: "NOTIFICATION_OPENED",
+            notification_id: notificationId,
+          });
         } catch {}
       }
     })(),

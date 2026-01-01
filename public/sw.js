@@ -1,4 +1,5 @@
-self.__WB_MANIFEST;
+self.__WB_MANIFEST = self.__WB_MANIFEST || [];
+
 
 self.addEventListener("install", () => {
   self.skipWaiting();

@@ -1,6 +1,4 @@
-import { precacheAndRoute } from "workbox-precaching";
-
-precacheAndRoute(self.__WB_MANIFEST);
+self.__WB_MANIFEST;
 
 self.addEventListener("install", () => {
   self.skipWaiting();
@@ -64,8 +62,7 @@ self.addEventListener("notificationclick", (event) => {
         } catch {}
       }
 
-      const url = "/";
-      const newClient = await self.clients.openWindow(url);
+      const newClient = await self.clients.openWindow("/");
       if (newClient) {
         await new Promise((r) => setTimeout(r, 300));
         try {

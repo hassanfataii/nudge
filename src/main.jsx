@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")).render(
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
-      await navigator.serviceWorker.register("/sw.js", { type: "module" });
+      await navigator.serviceWorker.register("/sw.js");
     } catch {}
   });
 }

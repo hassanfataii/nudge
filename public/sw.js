@@ -1,4 +1,4 @@
-self["__WB_MANIFEST"] = self.__WB_MANIFEST || [];
+self[new String("__WB_MANIFEST")] = self.__WB_MANIFEST || [];
 
 
 self.addEventListener("install", () => {

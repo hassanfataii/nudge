@@ -5,7 +5,7 @@ export const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error(
-    'Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY. Put .env/.env.local in the SAME folder as package.json and restart npm run dev.'
+    'Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY. Put .env in the root folder and restart the server'
   );
 }
 

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../lib/supabase";
 import "../styles/global.css";
-import IosInstallSheet from "../components/IosInstallSheet";
+
 function isIos() {
   return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
 }
@@ -409,7 +409,7 @@ export default function Dashboard({ onExit, onProfile }) {
           <span className="dash-logo">Nudge</span>
         </header>
         <main className="dash-main">
-          {iosNeedsInstallForPush && <IosInstallSheet />}
+          {iosNeedsInstallForPush}
           <div className="dash-container">
             <section className="dash-card">
               <h3 className="dash-card-title">Session</h3>

@@ -25,7 +25,7 @@ export default function Profile({ onBack, onExit }) {
   const [stats, setStats] = useState({
     currentStreak: 0,
     longestStreak: 0,
-    logsThisWeek: 0, // you can rename this state key later if you want
+    logsThisWeek: 0,
   });
 
   const [statusMessage, setStatusMessage] = useState({ type: "", text: "" });
@@ -57,7 +57,6 @@ export default function Profile({ onBack, onExit }) {
   useEffect(() => {
     if (!participant?.id) return;
     hydrateProfile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [participant?.id]);
 
   const hydrateProfile = async () => {
@@ -138,7 +137,6 @@ export default function Profile({ onBack, onExit }) {
         setStats((prev) => ({ ...prev, currentStreak: 0, longestStreak: 0 }));
       }
 
-      // TOTAL LOG COUNT (all-time), not per week
       const { count, error: cErr } = await supabase
         .from("logs")
         .select("id", { count: "exact", head: true })

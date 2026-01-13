@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { supabase } from "./lib/supabase";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -36,14 +37,29 @@ function App() {
   }, []);
 
   if (page === "login") {
-    return <Login onNext={() => setPage("dashboard")} />;
+    return (
+      <>
+        <Login onNext={() => setPage("dashboard")} />
+        <Analytics />
+      </>
+    );
   }
 
   if (page === "profile") {
-    return <Profile onBack={() => setPage("dashboard")} onExit={() => setPage("login")} />;
+    return (
+      <>
+        <Profile onBack={() => setPage("dashboard")} onExit={() => setPage("login")} />
+        <Analytics />
+      </>
+    );
   }
 
-  return <Dashboard onExit={() => setPage("login")} onProfile={() => setPage("profile")} />;
+  return (
+    <>
+      <Dashboard onExit={() => setPage("login")} onProfile={() => setPage("profile")} />
+      <Analytics />
+    </>
+  );
 }
 
 export default App;
